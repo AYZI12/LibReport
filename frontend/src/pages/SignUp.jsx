@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../styles/Auth.css";
+import api, { setAuthToken } from "../api";
 
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
@@ -13,6 +14,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const newErrors = {};
 
     if (!fullName.trim()) {
@@ -56,6 +58,21 @@ const SignUp = () => {
     const value = e.target.value;
     if (/^\d{0,6}$/.test(value)) {
       setUserId(value);
+=======
+    setError("");
+    const v = validate();
+    if (v) { setError(v); return; }
+    try {
+      setLoading(true);
+      const { data } = await api.post('/auth/signup', form);
+      if (data?.token) setAuthToken(data.token);
+      try { localStorage.setItem('lr_user', JSON.stringify(data.user || {})); } catch {}
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+>>>>>>> f2c7f47e09fc9d30e5a29568bb53d7aa59876c04
     }
   };
 
