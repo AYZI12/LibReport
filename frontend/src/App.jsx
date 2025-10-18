@@ -10,13 +10,15 @@ import Reports from "./pages/Reports";
 import UserManagement from "./pages/UserManagement";
 import MaterialManagement from "./pages/MaterialManagement";
 import BooksManagement from "./pages/BooksManagement";
+import StudentDashboard from "./pages/student/StudentDashboard";
+import BooksBorrowed from "./pages/student/BooksBorrowed";
+import BrowseLibrary from "./pages/student/BrowseLibrary";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-    
           <Route path="/" element={<SignIn />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
@@ -27,6 +29,10 @@ function App() {
           <Route path="/usermanagement" element={<UserManagement />} />
           <Route path="/materialmanagement" element={<MaterialManagement />} />
           <Route path="/booksmanagement" element={<BooksManagement />} />
+          <Route path="/student/dashboard" element={<StudentDashboard />} />
+          <Route path="/student/books-borrowed" element={<BooksBorrowed />} />
+          <Route path="/student/browse-library" element={<BrowseLibrary />} />
+          
         </Routes>
       </div>
     </Router>
